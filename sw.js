@@ -1,6 +1,6 @@
 // we'll version our cache (and learn how to delete caches in
 // some other post)
-const cacheName = 'v1::static';
+const cacheName = 'v2::static'
 
 self.addEventListener('install', e => {
   // once the SW is installed, go ahead and fetch the resources
@@ -10,10 +10,10 @@ self.addEventListener('install', e => {
       return cache.addAll([
         '/',
         '/open.txt',
-      ]).then(() => self.skipWaiting());
+      ]).then(() => self.skipWaiting())
     })
-  );
-});
+  )
+})
 
 // when the browser fetches a url, either response with
 // the cached object or go ahead and fetch the actual url
@@ -23,7 +23,7 @@ self.addEventListener('fetch', event => {
     caches.open(cacheName).then(cache => {
       return cache.match(event.request).then(res => {
         return res || fetch(event.request)
-      });
+      })
     })
-  );
-});
+  )
+})
