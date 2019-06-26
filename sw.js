@@ -9,7 +9,7 @@ self.addEventListener('install', e => {
     caches.open(cacheName).then(cache => {
       return cache.addAll([
         '/',
-        '/test.txt',
+        '/open.txt',
       ]).then(() => self.skipWaiting());
     })
   );
